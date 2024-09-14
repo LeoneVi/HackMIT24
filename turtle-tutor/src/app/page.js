@@ -1,30 +1,52 @@
 import Image from "next/image";
 import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Dropdown from 'react-bootstrap/Dropdown';
+// import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+// import Dropdown from 'react-bootstrap/Dropdown';
+// import dynamic from 'next/dynamic';
+
+// const Dropdown = dynamic(() => import('react-bootstrap/Dropdown'), { ssr: false });
 
 
 export default function Home() {
+
   return (
     <div className="grid grid-rows-[20px_1fr_20px] justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
       <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
         <h1 style={{ color: "#468585", fontSize: "4em", justifyContent: "center", fontWeight: "bold", letterSpacing: ".3em" }} className="items-center">
           turtle tutor
         </h1>
-        <p>
-          Select a
-          <Dropdown>
-            <Dropdown.Toggle variant="success" id="dropdown-basic">
-              Topic
-            </Dropdown.Toggle>
 
-            <Dropdown.Menu>
-              <Dropdown.Item href="#/action-1">Java</Dropdown.Item>
-              <Dropdown.Item href="#/action-2">Python</Dropdown.Item>
-              <Dropdown.Item href="#/action-3">Javascript</Dropdown.Item>
-            </Dropdown.Menu>
-          </Dropdown>
-        </p>
+        <div className="items-center justify-items-center">
+          <p style={{ color: "#000", fontSize: "1.5em"}}>
+            Select a
+            
+            <select style={{ paddingLeft: "0.5em", marginLeft: "0.5em", borderWidth: "0.10em", borderRadius: "0.4em", borderColor: "#808080"}} className="topic">
+            <option value="java">Topic</option>
+              <option value="java">Java</option>
+              <option value="python">Python</option>
+              <option value="javascript">Javascript</option>
+            </select>
+            
+          </p>
+        </div>
+        <div>
+          <p style={{ color: "#000", fontSize: "1.5em"}}>
+            or 
+            <input style={{ paddingLeft: "0.5em", marginLeft: "0.5em", borderWidth: "0.10em", borderRadius: "0.4em", borderColor: "#808080"}}>
+
+            </input>
+          </p>
+        </div>
+
+        <div>
+          <p style={{ color: "#000", fontSize: "1.5em"}}>
+            Class Size: 
+            <input style={{ paddingLeft: "0.5em", marginLeft: "0.5em", borderWidth: "0.10em", borderRadius: "0.4em", borderColor: "#808080"}}>
+
+            </input>
+          </p>
+        </div>
 
         <div className="flex gap-4 items-center flex-col sm:flex-row">
           <a
@@ -32,23 +54,9 @@ export default function Home() {
             href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
             target="_blank"
             rel="noopener noreferrer"
+            style={{backgroundColor: "#468585"}}
           >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
+            Go!
           </a>
         </div>
       </main>
