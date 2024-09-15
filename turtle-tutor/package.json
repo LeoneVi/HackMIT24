@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "backend": "flask --app backend/backend run", 
+    "backend": "flask --app backend/backend run",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
