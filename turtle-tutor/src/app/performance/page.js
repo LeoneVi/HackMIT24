@@ -3,17 +3,76 @@ import './page.css'; // Assuming some global styles, you can create this file or
 
 const PerformanceStats = () => {
   // These variables will hold the performance data
-  const positives = ["Great at explaining complex concepts", "Engaged actively with AI student", "Provided clear examples"];
-  const negatives = ["Struggled with time management", "Missed addressing some key questions"];
-  const additionalNotes = ["Consider using more visuals", "Try to be more concise with explanations"];
+  var bestAnswer = [1, "faithfulness", "context relevancy", "answer relevancy"];
+  var worstAnswer = [1, "faithfulness", "context relevancy", "answer relevancy"];
+  var additionalNotes  = ["faithfulness", "context relevancy", "answer relevancy"];
+  var placeholder = [];
+  var max = 0;
+  var min = Number.MAX_SAFE_INTEGER;
+  var maxObj = [];
+  var minObj = [];
 
   async function getText() {
-    return ["", "", ""];
+    return [[1, "faithfulness", "context relevancy", "answer relevancy"], [1, "faithfulness", "context relevancy", "answer relevancy"], ["faithfulness", "context relevancy", "answer relevancy"]];
   }
 
   async function setText() {
-    
+    bestAnswer = getText()[0];
+    worstAnswer = getText()[1];
+    additionalNotes = getText()[2];
   }
+
+  async function getScore(params) {
+    placeholder.push(reasoningChat);
+    for (let index = 0; index < placeholder.length; index++) {
+      if(placeholder[index] > max){
+        max = placeholder[index];
+        maxObj = [placeholder[index][1], placeholder[index][2]];
+      }
+      if(placeholder[index] < min){
+        min = placeholder[index];
+        maxObj = [placeholder[index][1], placeholder[index][2]];
+      }
+    }
+    return;
+  }
+
+
+//Returns first studen's question based on a topic
+async function startChat(topic) {
+    const form = new FormData()
+    console.log("start chat")
+    form.append("topic", topic)
+    const res = await fetch("http://localhost:5000/init", {
+        method: "POST",
+        body: form
+    })
+    console.log(res)
+    const json = await res.json()
+    console.log(json)
+    return json["text"]    
+}
+
+
+//Returns a value 0-1 rating a response to the last question
+async function reasoningChat() {
+    const res = await fetch("http://localhost:5000/reasoning")
+    const json = await res.json()
+    console.log(json)
+    return json
+}
+
+//send an answer back to LLM
+async function messageChat(msg) {
+    const form = new FormData()
+    form.append("answer", msg)
+    const res = await fetch("http://localhost:5000/session", {
+        method: "POST",
+        body: form
+    }) 
+    const json = await res.json()
+    return json["question"]
+}
 
   return (
     <div className="performance-container">
