@@ -1,63 +1,154 @@
-/* General styles */
+/* page.css */
+
+/* Main content container */
+#main-content-container {
+  display: flex;
+  justify-content: start;
+  align-items: start;
+}
+
+/* Left column (Live feedback container) */
+#left-column {
+  background-color: none;
+  width: 30%;
+  min-width: 200px;
+}
+
+#live-feedback-content {
+  background-color: none;
+  height: 20vh;
+  font-size: 1.5em;
+  font-weight: 900;
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  padding: 2em 0 0 0;
+  margin: 0 0 3em 0;
+}
+
+#turtle-container {
+  background-color: none;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: start;
+  flex-wrap: wrap-reverse;
+}
+
+.turtle-image {
+  background-color: none;
+  width: 50px;
+  height: auto;
+  margin: 0 1.25em 0 0;
+}
+
+/* Right column (Chat continer) */
+#right-column {
+  background-color: #9ae5b1;
+  width: 70%;
+  min-width: 400px;
+}
+
+/* Chat container */
 .chat-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 100vh;
-    background-color: #f5f5f5;
-  }
-  
-  .chat-box {
-    padding: 10px;
-    flex: 1;
-    overflow-y: scroll;
-  }
-  
-  .bubble {
-    padding: 10px 15px;
-    border-radius: 20px;
-    margin: 10px;
-    max-width: 60%;
-    font-size: 1.2em;
-  }
-  
-  /* Left and Right bubble styles */
-  .left {
-    background-color: #a1dba1;
-    align-self: flex-start;
-  }
-  
-  .right {
-    background-color: #468585;
-    color: white;
-    align-self: flex-end;
-  }
-  
-  .input-container {
-    display: flex;
-    background-color: #468585;
-    padding: 10px;
-    align-items: center;
-  }
-  
-  input {
-    flex: 1;
-    border-radius: 20px;
-    padding: 10px;
-    border: none;
-    outline: none;
-    margin-right: 10px;
-  }
-  
-  .send-button {
-    background-color: #fff;
-    border: none;
-    border-radius: 50%;
-    padding: 10px;
-    cursor: pointer;
-  }
-  
-  .send-button:hover {
-    background-color: #ccc;
-  }
-  
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+  /* max-width: 800px; */
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f0f0f0;
+}
+
+/* Chat box (message area) */
+.chat-box {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow-y: auto;
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+/* Input container */
+.input-container {
+  font-size: 1.5em;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+/* Input field */
+.input-container input {
+  flex-grow: 1;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+/* Send button */
+.send-button {
+  padding: 10px 15px;
+  background-color: #468585;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.send-button:hover {
+  background-color: #3c7575;
+}
+
+/* Bubble styles */
+.bubble {
+  padding: 10px 15px;
+  border-radius: 15px;
+  max-width: 70%;
+  font-size: 1.5em;
+}
+
+.bubble.left {
+  background-color: #9ae5b1;
+  align-self: flex-start;
+  border-top-left-radius: 0;
+}
+
+.bubble.right {
+  background-color: #4c8485;
+  color: white;
+  align-self: flex-end;
+  border-top-right-radius: 0;
+  text-align: right;
+}
+
+
+.end-session-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.end-session-button {
+  background-color: #468585;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1.5em;
+  transition: background-color 0.3s;
+}
+
+.end-session-button:hover {
+  background-color: #3b6e6e;
+} 
