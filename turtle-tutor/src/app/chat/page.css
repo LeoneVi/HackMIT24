@@ -1,12 +1,62 @@
 /* page.css */
 
+/* Main content container */
+#main-content-container {
+  display: flex;
+  justify-content: start;
+  align-items: start;
+}
+
+/* Left column (Live feedback container) */
+#left-column {
+  background-color: none;
+  width: 30%;
+  min-width: 200px;
+}
+
+#live-feedback-content {
+  background-color: none;
+  height: 20vh;
+  font-size: 1.5em;
+  font-weight: 900;
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  padding: 2em 0 0 0;
+  margin: 0 0 3em 0;
+}
+
+#turtle-container {
+  background-color: none;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: start;
+  flex-wrap: wrap-reverse;
+}
+
+.turtle-image {
+  background-color: none;
+  width: 50px;
+  height: auto;
+  margin: 0 1.25em 0 0;
+}
+
+/* Right column (Chat continer) */
+#right-column {
+  background-color: #9ae5b1;
+  width: 70%;
+  min-width: 400px;
+}
+
 /* Chat container */
 .chat-container {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   height: 100vh;
-  max-width: 800px;
+  /* max-width: 800px; */
   margin: 0 auto;
   padding: 20px;
   background-color: #f0f0f0;
@@ -27,6 +77,7 @@
 
 /* Input container */
 .input-container {
+  font-size: 1.5em;
   display: flex;
   align-items: center;
   gap: 10px;
@@ -63,7 +114,7 @@
   padding: 10px 15px;
   border-radius: 15px;
   max-width: 70%;
-  font-size: 1.2em;
+  font-size: 1.5em;
 }
 
 .bubble.left {
@@ -94,7 +145,7 @@
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  font-size: 1em;
+  font-size: 1.5em;
   transition: background-color 0.3s;
 }
 
