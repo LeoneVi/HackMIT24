@@ -4,16 +4,22 @@ import React, { useEffect, useState } from 'react';
 import './page.css'; // Assuming you have some global styles, if not remove this
 
 
+async function getText() {
+    return "foo"
+}
+
 
 
 //Returns first studen's question based on a topic
 async function startChat(topic) {
     const form = new FormData()
+    console.log("start chat")
     form.append("topic", topic)
     const res = await fetch("http://localhost:5000/init", {
         method: "POST",
         body: form
     })
+    console.log(res)
     const json = await res.json()
     console.log(json)
     return json["text"]    
@@ -44,12 +50,12 @@ async function messageChat(msg) {
 const Chat = () => {
   const search = useSearchParams();
   const topic = search.get("topic")
-  console.log(topic) 
   const [messages, setMessages] = useState([])
   const [loading, setLoading] = useState(true)
   useEffect(() => {
       startChat(topic).then((res) => {
         console.log(res)
+        console.log("red")
         const newMessages = [...messages, {"text": res, "sender": "left"}]
         setMessages(newMessages)
       })
