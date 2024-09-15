@@ -17,32 +17,32 @@ review_system = "I want you to score how well a tutor answers a students Java qu
 bad_teacher_system = "I want you to act as a bad tutor. I'm going to ask you Java questions, and I want you to either completely incorrectly. Your answers shouldn't be tongue and cheek or just humorous, but deadpan and directly factually incorrect. Make your ansers seem plausible while not being true. Specifically, dont joke about Java being coffee."
 
 
-student_messages = [{"role": "system", "content": student_system}]
-
+student_messages = []
 #bad_teacher_messages = [{"role": "system", "content": bad_teacher_system}]
 teacher_messages = [{"role": "system", "content": teacher_verbose_system}]
 
 
 
-def student(msg: str, topic : str): 
+def student(msg: str, topic : str):
+     
     student_system = f"Your job is to act as my {topic} student. You should ask me questions, and have me try to explain {topic} concepts to you. If I explain something well, say you understand and ask more questions. If I explain concepts poorly, continue to act confused and ask more questions to attempt to understand."
     student_messages.append({"role": "user", "content": msg})
     response = client.chat.completions.create(
         model= "gpt-4o-mini",
-        messages= student_messages,
+        messages= [{"role": "system", "content": student_system}] + student_messages,
         temperature = 0.5
     )
     text = response.choices[0].message.content
     student_messages.append({"role": "assistant", "content": text})
     print("\033[96mStudent: " + text)
-    
+    print
     teacher_messages.append({"role": "user", "content": text})
     teacher_messages.append({"role": "assistant", "content": msg})
     return text
 
 def clear_state():
     global student_messages, teacher_messages
-    student_messages = [{"role": "system", "content": student_system}]
+    student_messages = []
     teacher_messages = [{"role": "system", "content": teacher_verbose_system}]
    
 
@@ -74,6 +74,54 @@ def test_deep_eval():
     metric.measure(test_case)
     print(metric.score)    
     print(metric.reason)
+
+
+
+
+
+def deep_eval_triple():
+    msgs = student_messages
+    relv_metric = AnswerRelevancyMetric(
+            threshold = 0.7,
+            model = "gpt-4o-mini",
+            include_reason = True
+    )
+    faith_metric = FaithfulnessMetric(
+            threshold = 0.7,
+            model = "gpt-4o-mini",
+            include_reason = True
+    )
+    cont_metric = ContextualRelevancyMetric( 
+            threshold = 0.7,
+            model = "gpt-4o-mini",
+            include_reason = True
+    ) 
+    last_student = msgs[-3]
+    last_user = msgs[-2]
+    
+    print(last_student)
+    assert last_student["role"] == "assistant"
+    assert last_user["role"] == "user"
+    response = client.chat.completions.create(
+        model = "gpt-4o-mini",
+        messages = teacher_messages,
+        temperature = 0.5,
+    )
+    ideal_text = response.choices[0].message.content
+    relv_case = LLMTestCase(
+        input = last_student["content"],
+        actual_output = last_user["content"],
+    )
+    test_case = LLMTestCase(
+        input = last_student["content"],
+        actual_output = last_user["content"],
+        retrieval_context = [ideal_text]
+    )
+    relv_metric.measure(relv_case)
+    faith_metric.measure(test_case)
+    cont_metric.measure(test_case)
+    eval_json = {"faithfulness": faith_metric.score, "faithfulness_reason": faith_metric.reason, "relevancy": relv_metric.score, "relevancy_reason": relv_metric.reason, "cont": cont_metric.score, "cont_reason": cont_metric.reason} 
+    return eval_json
 
 
 
