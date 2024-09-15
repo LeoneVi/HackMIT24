@@ -25,3 +25,50 @@ body {
     text-wrap: balance;
   }
 }
+
+#main-content {
+  background-color: none;
+  display: flex;
+  justify-content: start;
+}
+
+#left-column {
+  background-color: none;
+  width: 650px;
+}
+
+#main-title-content {
+  background-color: none;
+  white-space: nowrap;
+  padding: 0 0 .25em 0;
+}
+
+#topic-content {
+  background-color: none;
+  white-space: nowrap;
+  padding: 0 0 1.0em 0;
+}
+
+/* REMOVED */
+/* #class-size-content {
+  background-color: none;
+  white-space: nowrap;
+  padding: 0 0 2em 0;
+} */
+
+#submission-button-content {
+background-color: none;
+width: 100%;
+}
+
+#submission-button {
+  font-size: 1.75em;
+  background-color: none;
+  white-space: nowrap;
+  width: 80%;
+  padding: 0.5em;
+}
+
+#right-column {
+  background-color: none;
+}
