@@ -63,10 +63,14 @@ const Chat = () => {
   */
   const [inputText, setInputText] = useState("");
     
-  const handleSendMessage = () => {
+  const handleSendMessage = async () => {
     if (inputText.trim() !== "") {
-      setMessages([...messages, { text: inputText, sender: "right" }]);
+      const new_msgs = [...messages, 
+        {text: inputText, sender: "right"}];
+      setMessages(new_msgs)
       setInputText(""); // Clear the input field
+      const res = await messageChat(inputText) 
+      setMessages([...new_msgs, {text: res, sender: "left"}])
     }
   };
 
@@ -83,6 +87,7 @@ const Chat = () => {
       <div className="input-container">
         <input 
           type="text" 
+          className = "text-slate-800"
           value={inputText}
           onChange={(e) => setInputText(e.target.value)}
           placeholder="Type a message..."

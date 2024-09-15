@@ -8,7 +8,6 @@ from deepeval.test_case import LLMTestCase
 
 client = openai.OpenAI()
 
-student_system = "Your job is to act as my Java programming student. You should ask me questions, and have me try to explain Java concepts to you. If I explain something well, say you understand and ask more questions. If I explain concepts poorly, continue to act confused and ask more questions to attempt to understand."
 
 teacher_short_system = "Your job is to act as my Java programming tutor. Be very brief in your answer, just a couple sentences."
 teacher_verbose_system = "Your job is to act as my Java programming tutor. Be extremely thorough in your answer, provide high quality explanations to my questions."
@@ -25,7 +24,8 @@ teacher_messages = [{"role": "system", "content": teacher_verbose_system}]
 
 
 
-def student(msg: str, review = False): 
+def student(msg: str, topic : str): 
+    student_system = f"Your job is to act as my {topic} student. You should ask me questions, and have me try to explain {topic} concepts to you. If I explain something well, say you understand and ask more questions. If I explain concepts poorly, continue to act confused and ask more questions to attempt to understand."
     student_messages.append({"role": "user", "content": msg})
     response = client.chat.completions.create(
         model= "gpt-4o-mini",
