@@ -1,21 +1,75 @@
 /* performance.css */
 
-.performance-container {
+.main-container{
     display: flex;
+    justify-content: space;
+}
+
+.performance-container {
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
     padding: 20px;
     max-width: 800px;
-    margin: 0 auto;
+    float: left;
+    width: 55%;
+  }
+
+  .score_container{
+    float: right;
+    width: 45%;
+    display: flex;
+    justify-content: center;
+     align-items: center; 
+    height: 100vh; 
+  }
+  
+  .image_container{
+    margin-right: 5px
+  }
+
+  .home_container{
+    margin-left: 1px;
+    margin-right: 10px;
+    text-align: center;
   }
   
   .title {
     font-size: 2.5em;
-    color: #468585;
+    color: #306868;
     margin-bottom: 20px;
     text-align: center;
   }
+
+  .score{
+    font-size: 6em;
+    color: #306868;
+    margin-bottom: 5px;
+    text-align: center;
+  }
+
+  .take_me_home{
+    font-size: 3em;
+    color: #306868;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .home_button{
+    padding: 0.9rem 1.75rem;
+    background-color: #306868;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 5rem;
+    font-size: 1.1rem;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.2s;
+  }
+
+  .home_button:hover {
+    background-color: #244c4c; 
+    transform: scale(1.05); 
+  }
+  
   
   .stats-section {
     margin-bottom: 30px;
