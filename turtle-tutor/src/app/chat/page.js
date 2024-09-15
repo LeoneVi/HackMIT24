@@ -1,3 +1,4 @@
+"use client"
 import React, { useState } from 'react';
 import './page.css'; // Assuming you have some global styles, if not remove this
 
