@@ -23,7 +23,7 @@ export default function Home() {
           <p style={{ color: "#000", fontSize: "1.5em"}}>
             Select a
             <select style={{ paddingLeft: "0.5em", marginLeft: "0.5em", borderWidth: "0.10em", borderRadius: "0.4em", borderColor: "#808080"}} className="topic">
-              <option value="java">Topic</option>
+              <option value="default">Topic</option>
               <option value="java">Java</option>
               <option value="python">Python</option>
               <option value="javascript">Javascript</option>
