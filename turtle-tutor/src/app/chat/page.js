@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './page2.css'; // Assuming you have some global styles, if not remove this
+import './page.css'; // Assuming you have some global styles, if not remove this
 
 const Chat = () => {
   const [messages, setMessages] = useState([
