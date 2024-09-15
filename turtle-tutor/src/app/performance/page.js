@@ -1,11 +1,19 @@
 import React from 'react';
-import './performance.css'; // Assuming some global styles, you can create this file or include it in your project
+import './page.css'; // Assuming some global styles, you can create this file or include it in your project
 
 const PerformanceStats = () => {
   // These variables will hold the performance data
   const positives = ["Great at explaining complex concepts", "Engaged actively with AI student", "Provided clear examples"];
   const negatives = ["Struggled with time management", "Missed addressing some key questions"];
   const additionalNotes = ["Consider using more visuals", "Try to be more concise with explanations"];
+
+  async function getText() {
+    return ["", "", ""];
+  }
+
+  async function setText() {
+    
+  }
 
   return (
     <div className="performance-container">

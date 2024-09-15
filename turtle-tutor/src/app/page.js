@@ -15,9 +15,22 @@ export default function Home() {
   return (
     <div className="grid grid-rows-[20px_1fr_20px] justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
       <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <h1 style={{ color: "#468585", fontSize: "4em", justifyContent: "center", fontWeight: "bold", letterSpacing: ".3em" }} className="items-center">
-          turtle tutor
-        </h1>
+        
+        {/* Container for Logo and Title */}
+        <div className="flex items-center">
+          {/* Logo */}
+          <Image
+            src="/mnt/data/turtle-logo.svg"  // Path to the logo file
+            alt="Turtle Tutor Logo"
+            width={80}  // Adjust width
+            height={80} // Adjust height
+          />
+          
+          {/* Title */}
+          <h1 style={{ color: "#468585", fontSize: "4em", justifyContent: "center", fontWeight: "bold", letterSpacing: ".3em", marginLeft: "20px" }} className="items-center">
+            turtle tutor
+          </h1>
+        </div>
 
         <div className="items-center justify-items-center">
           <p style={{ color: "#000", fontSize: "1.5em"}}>

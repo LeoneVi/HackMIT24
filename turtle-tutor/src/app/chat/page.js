@@ -1,5 +1,6 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState } from 'react';
+import './page.css'; // Ensure your global styles are applied
 import { useRouter } from "next/navigation"; // Import useRouter for navigation
 
 const Chat = () => {
