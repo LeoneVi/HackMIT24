@@ -42,7 +42,8 @@ export default function Home() {
                 </p>
             </div>
 
-            {/* Class size selection */}
+            {/* REMOVED */}
+            {/* Class size selection
             <div id="class-size-content" className="w-1/10 mx-auto">
               <p style={{ color: "#000", fontSize: "1.75em"}}>
                 Class size: 
@@ -50,7 +51,7 @@ export default function Home() {
                 <button style={{ marginLeft: "0.5em", paddingLeft: "0.5em", paddingRight: "0.5em", borderWidth: "0.10em", borderRadius: "0.4em", borderColor: "#808080"}}>Medium</button>
                 <button style={{ marginLeft: "0.5em", paddingLeft: "0.5em", paddingRight: "0.5em", borderWidth: "0.10em", borderRadius: "0.4em", borderColor: "#808080"}}>Large</button>
               </p>
-            </div>
+            </div> */}
 
             {/* Submission button */}
             <div id="submission-button-content" className="w-1/2 mx-auto">
@@ -77,10 +78,18 @@ export default function Home() {
 
       {/* Credits footer */}
       <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <p style={{color: "#9D5E5B", fontSize: "1.0em"}}>
+        <p style={{color: "#50B498", fontSize: "1.0em"}}>
           Created by Amisha, Jordan, Tory, and Gabe @HackMIT 2024! =)
         </p>
       </footer>
     </div>
   );
+}
+
+function MyButton() {
+  const[count, setCount] = useState(0);
+
+  function handleClick() {
+    
+  }
 }

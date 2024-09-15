@@ -49,11 +49,12 @@ body {
   padding: 0 0 1.0em 0;
 }
 
-#class-size-content {
+/* REMOVED */
+/* #class-size-content {
   background-color: none;
   white-space: nowrap;
-  padding: 0 0 1.5em 0;
-}
+  padding: 0 0 2em 0;
+} */
 
 #submission-button-content {
 background-color: none;
